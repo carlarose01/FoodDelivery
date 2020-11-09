@@ -1,7 +1,7 @@
 Original App Design Project - README Template
 ===
 
-# APP_NAME_HERE
+Food Delivery App
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -11,7 +11,7 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-[Description of your app]
+Food delivery app that compares pricing for different food delivery apps (UberEats, Grubhub, Doordash, etc.)
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
@@ -28,39 +28,57 @@ Original App Design Project - README Template
 
 **Required Must-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* User should be able to create account, log in, log out
+* User should be able to search restaurants in area with filters
+* User should be able to view feed of food delivery prices in RecyclerView
+* User should be able to see best/cheapest option on top when search completes
+* User should be able to use Google Maps API to find restaurants
+* User should be able to place order through app
 
 **Optional Nice-to-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* User should be able to view more details on restaurant in new activity
+* User should be able to track the order by location
 
 ### 2. Screen Archetypes
 
-* [list first screen here]
-   * [list associated required story here]
-   * ...
-* [list second screen here]
-   * [list associated required story here]
-   * ...
+* Login
+   * User should be able to login/logout
+* Register
+   * User should be able to create a new account
+* Search and Feed
+  * User should be able to see feed of restaurants in the area
+  * User should be able to search in bar at the top wth filter
+* Restaurant View
+  * User should be able to view restaurant information (delivery time, fees, rating, location, menu)
+* Maps
+  * User should be able to view restaurant location
+* (Optional) Cart 
+  * User should be able to add menu items to their cart and place order (bottom screen)
+* (Optional) Tracking Page
+  * User should be able to view Maps fragment and RecyclerView of updates
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* Home Feed - view and search restaurants in area
+* Profile - login/logout, view past orders(optional)
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Forced Log In
+   * Login if has an account
+   * Register if does not have account
+* Login/Register
+   * Home feed
+* Log Out
+  * Back to Login 
+* Home Feed
+  * Map if map selected 
+  * Recycler view of search
+* Profile
+  * About - change info
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
