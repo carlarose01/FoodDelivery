@@ -15,12 +15,12 @@ Food delivery app that compares pricing for different food delivery apps (UberEa
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Service/Food Delivery
+- **Mobile:** Primarily developed for mobile devices
+- **Story:** Compares prices among food delivery fees for specific restaurants and provides the filtered options to the users
+- **Market:** Any individual would be able to use this app
+- **Habit:** This app would be used depending on amount of food a user delivers
+- **Scope:** Begin by providing best options to user and evolve into placing and tracking orders through the app
 
 ## Product Spec
 
