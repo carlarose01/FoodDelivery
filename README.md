@@ -81,7 +81,7 @@ Food delivery app that compares pricing for different food delivery apps (UberEa
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="file:///Users/carlarose/Desktop/Screen%20Shot%202020-11-11%20at%208.01.57%20PM.png" width=600>
+<img src="https://i.ibb.co/VQnscxj/Screen-Shot-2020-11-11-at-8-01-57-PM.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
