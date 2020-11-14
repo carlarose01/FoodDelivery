@@ -1,7 +1,7 @@
 Original App Design Project - README Template
 ===
 
-Food Delivery App
+Safety Crowdsourcing App
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -11,15 +11,15 @@ Food Delivery App
 
 ## Overview
 ### Description
-Food delivery app that compares pricing for different food delivery apps (UberEats, Grubhub, Doordash, etc.)
+Safety crowdsourcing app developed for communities to remain safe reporting suspicious activity, events, etc using crowdsourcing.
 
 ### App Evaluation
-- **Category:** Service/Food Delivery
+- **Category:** Social Media/Safety
 - **Mobile:** Primarily developed for mobile devices
-- **Story:** Compares prices among food delivery fees for specific restaurants and provides the filtered options to the users
+- **Story:** Provides space for community to post information about activity occurring around them
 - **Market:** Any individual would be able to use this app
-- **Habit:** This app would be used depending on amount of food a user delivers
-- **Scope:** Begin by providing best options to user and evolve into placing and tracking orders through the app
+- **Habit:** This app would be used depending on amount of people that contribute to crowdsourcing
+- **Scope:** Begin by displaying upload and feed features then add location services
 
 ## Product Spec
 
@@ -28,16 +28,18 @@ Food delivery app that compares pricing for different food delivery apps (UberEa
 **Required Must-have Stories**
 
 * User should be able to create account, log in, log out
-* User should be able to search restaurants in area with filters
-* User should be able to view feed of food delivery prices in RecyclerView
-* User should be able to see best/cheapest option on top when search completes
-* User should be able to use Google Maps API to find restaurants
-* User should be able to place order through app
+* User should be able to view feed of posts
+* User should be able to create new post with image
+* User should be able to view map to see activity going on in their area
+* User should be able to tag location when uploading posts
+* User should be able to view replies to their post in details view
+* User should be able to alert authorities in the need for immediate assistance 
 
 **Optional Nice-to-have Stories**
 
-* User should be able to view more details on restaurant in new activity
-* User should be able to track the order by location
+* User should be able to react to others' posts
+* User should be able to reply to others' posts
+* User should be able to filter feed based on safety, events, etc.
 
 ### 2. Screen Archetypes
 
@@ -45,24 +47,25 @@ Food delivery app that compares pricing for different food delivery apps (UberEa
    * User should be able to login/logout
 * Register
    * User should be able to create a new account
-* Search and Feed
-  * User should be able to see feed of restaurants in the area
-  * User should be able to search in bar at the top wth filter
-* Restaurant View
-  * User should be able to view restaurant information (delivery time, fees, rating, location, menu)
+* Feed
+  * User should be able to view feed of posts
+* Create Post
+  * User should be able to create post with image and location
 * Maps
-  * User should be able to view restaurant location
-* (Optional) Cart 
-  * User should be able to add menu items to their cart and place order (bottom screen)
-* (Optional) Tracking Page
-  * User should be able to view Maps fragment and RecyclerView of updates
+  * User should be able to view activity with pins on the map of their location
+* Profile
+  * User should be able to view profile, log out, and edit user information
+* Emergency 
+  * User should be able to alert authorities in the need for immediate assistance 
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* Home Feed - view and search restaurants in area
-* Profile - login/logout, view past orders(optional)
+* Home Feed - view posts of user
+* Profile - login/logout, edit user information
+* Alert - alert authorities of important information
+* Activity(Optional) - view replies and reactions to user posts
 
 **Flow Navigation** (Screen to Screen)
 
