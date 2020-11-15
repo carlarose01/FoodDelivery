@@ -65,6 +65,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 * Home Feed - view posts of user
 * Profile - login/logout, edit user information
 * Alert - alert authorities of important information
+* Map - view location with pins where activity posts are
 * Activity(Optional) - view replies and reactions to user posts
 
 **Flow Navigation** (Screen to Screen)
