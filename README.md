@@ -84,10 +84,10 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
   * About - change info
 
 ## Wireframes
-<img src="https://i.ibb.co/4S27nmZ/Screen-Shot-2020-11-11-at-8-10-08-PM.png" width=600>
+<img src="https://i.ibb.co/RPRVQz5/Screen-Shot-2020-11-18-at-3-08-45-PM.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="https://i.ibb.co/VQnscxj/Screen-Shot-2020-11-11-at-8-01-57-PM.png" width=600>
+<img src="" width=600>
 ### [BONUS] Interactive Prototype
 
 ## Schema 
