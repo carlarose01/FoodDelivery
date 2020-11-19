@@ -94,9 +94,17 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 [This section will be completed in Unit 9]
 ### Models
 Post
-Property | Type | Description 
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+| Property  | Type  | Description  |
+|---|---|---|
+| id  |   |   |
+| author  |   |   |
+| image  |   |   |
+| caption  |   |   |
+| commentsCount  |   |   |
+| likesCount  |   |   |
+| createdAt  |   |   |
+| updatedAt  |   |   |
+| location  |   |   |
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
