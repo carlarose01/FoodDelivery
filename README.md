@@ -91,7 +91,6 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
 **Post**
 | Property  | Type  | Description  |
@@ -128,6 +127,25 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 | profileImage  | File  | image author  |
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
+**List of network requests by screen**
+* Home Feed Screen
+  * (Read/GET) Query all posts 
+  * (Create/POST) Create a new like on a post
+  * (Delete) Delete an existing like
+  * (Create/POST) Create a new comment on a post
+  * (Delete) Delete an existing comment
+  * (Create/POST) Create a new post object
+  * (Update/PUT) Update post object
+* Profile Screen 
+  * (Read/GET) Query logged in User object
+  * (Update/PUT) Update user profile information
+* Maps Screen 
+  * (Read/GET) Query all locations tagged in posts
+  * (Create/POST) Create new post tagged in location
+* Alert Screen - external API
+* Activity Screen 
+  * (Read/GET) Query all comments and likes on logged in User object posts
+  * (Delete) Delete an existing comment
+  * (Delete) Delete an existing like
+
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
