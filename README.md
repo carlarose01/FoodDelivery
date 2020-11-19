@@ -93,18 +93,40 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-Post
+**Post**
 | Property  | Type  | Description  |
 |---|---|---|
-| id  |   |   |
-| author  |   |   |
-| image  |   |   |
-| caption  |   |   |
-| commentsCount  |   |   |
-| likesCount  |   |   |
-| createdAt  |   |   |
-| updatedAt  |   |   |
-| location  |   |   |
+| id  | String  | unique id (default)  |
+| author  | Pointer to User  | image author  |
+| image  | File  | image that user posts  |
+| caption  | String  | post caption by User  |
+| commentsCount  | Number  | numbers of comments posted to post  |
+| likesCount  | Number  | number of likes under the post  |
+| createdAt  | DateTime  | date when post is created (default)  |
+| updatedAt  | DateTime  | date when post is last updated (default)  |
+| location  | GeoPoint  | location where User tags the post  |
+
+**Comment**
+| Property  | Type  | Description  |
+|---|---|---|
+| id  | String  | unique id (default)  |
+| author  | Pointer to User  | image author  |
+| image  | File  | image that user posts  |
+| caption  | String  | post caption by User  |
+| commentsCount  | Number  | numbers of comments posted to post  |
+| likesCount  | Number  | number of likes under the post  |
+| createdAt  | DateTime  | date when post is created (default)  |
+| updatedAt  | DateTime  | date when post is last updated (default)  |
+| location  | GeoPoint  | location where User tags the post  |
+
+**User**
+| Property  | Type  | Description  |
+|---|---|---|
+| id  | String  | unique id (default)  |
+| name  | String  | author name  |
+| username  | String  | author username  |
+| profileImage  | File  | image author  |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
