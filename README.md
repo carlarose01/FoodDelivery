@@ -93,7 +93,10 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+Post
+Property | Type | Description 
+--- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
+Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
