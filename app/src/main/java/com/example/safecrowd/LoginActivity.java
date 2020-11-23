@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_SafeCrowd);
         setContentView(R.layout.activity_login);
 
         if(ParseUser.getCurrentUser() != null) {
