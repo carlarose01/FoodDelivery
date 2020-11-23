@@ -110,7 +110,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 |---|---|---|
 | id  | String  | unique id (default)  |
 | author  | Pointer to User  | image author  |
-| post  | Pointer to User  | pointer to post  |
+| post  | Pointer to Post  | pointer to post  |
 | image  | File  | image that user posts  |
 | caption  | String  | post caption by User  |
 | likesCount  | Number  | number of likes under the post  |
@@ -125,6 +125,13 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 | name  | String  | author name  |
 | username  | String  | author username  |
 | profileImage  | File  | image author  |
+
+**Activity**
+| Property  | Type  | Description  |
+|---|---|---|
+| id  | String  | unique id (default)  |
+| post  | Pointer to Post  | pointer to post  |
+| updatedAt  | DateTime  | date when post is updated (likes,comments)  |
 
 ### Networking
 **List of network requests by screen**
