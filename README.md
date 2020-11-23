@@ -132,6 +132,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 |---|---|---|
 | id  | String  | unique id (default)  |
 | post  | Pointer to Post  | pointer to post  |
+| post  | Pointer to User  | pointer to user  |
 | updatedAt  | DateTime  | date when post is updated (likes,comments)  |
 
 ### Networking
