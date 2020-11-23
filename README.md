@@ -88,6 +88,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 
 ### [BONUS] Digital Wireframes & Mockups
 <img src="" width=600>
+
 ### [BONUS] Interactive Prototype
 
 ## Schema 
