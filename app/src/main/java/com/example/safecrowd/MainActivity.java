@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.safecrowd.fragments.AlertFragment;
+import com.example.safecrowd.fragments.LocationFragment;
 import com.example.safecrowd.fragments.ProfileFragment;
 import com.example.safecrowd.fragments.PostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -60,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_alert:
                         fragment = new AlertFragment();
+                        break;
+                    case R.id.action_location:
+                        fragment = new LocationFragment();
                         break;
                     case R.id.action_profile:
                     default:
