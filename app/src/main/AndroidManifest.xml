@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".ParseApplication"
@@ -13,7 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        >
+        android:usesCleartextTraffic="true">
+
+        <!-- make sure within the application tag, otherwise app will crash with XmlResourceParser errors -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.safecrowd.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/fileprovider" />
+        </provider>
+
         <activity android:name=".LoginActivity"
             android:theme="@style/Theme.SafeCrowd.LauncherScreen">
             <intent-filter>
@@ -24,8 +37,11 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.SafeCrowd"
             >
         </activity>
+        <activity android:name=".ComposeActivity"
+            android:theme="@style/Theme.SafeCrowd"></activity>
     </application>
 
 </manifest>

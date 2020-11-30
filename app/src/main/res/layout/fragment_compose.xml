@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ComposeFragment"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Description" />
+
+    <Button
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:id="@+id/btnCaptureImage"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:icon="@drawable/ic_camera"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/ivPostImage"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        android:backgroundTint="@color/yellow"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+</LinearLayout>

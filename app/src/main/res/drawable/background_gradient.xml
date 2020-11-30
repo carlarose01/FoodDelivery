@@ -3,7 +3,9 @@
     <item android:drawable="@drawable/ic_background" />
 
     <item
-        android:drawable="@drawable/ic_home"
-        android:gravity="center" />
+        android:drawable="@mipmap/ic_icon"
+        android:gravity="center"
+        android:width="200dp"
+        android:height="200dp"/>
 
 </layer-list>
