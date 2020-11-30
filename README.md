@@ -27,9 +27,9 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 
 **Required Must-have Stories**
 
-* User should be able to create account, log in, log out
-* User should be able to view feed of posts
-* User should be able to create new post with image
+[x] User should be able to create account, log in, log out
+[x] User should be able to view feed of posts
+[x] User should be able to create new post with image
 * User should be able to view map to see activity going on in their area
 * User should be able to tag location when uploading posts
 * User should be able to view replies to their post in details view
@@ -37,7 +37,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 
 **Optional Nice-to-have Stories**
 
-* User should be able to react to others' posts
+* User should be able to react (like) to others' posts
 * User should be able to reply to others' posts
 * User should be able to filter feed based on safety, events, etc.
 
