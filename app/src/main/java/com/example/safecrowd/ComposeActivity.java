@@ -41,6 +41,7 @@ public class ComposeActivity extends AppCompatActivity {
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
+    private ImageView compose_toolbar_cancel_button;
 
     private File photoFile;
     public String photoFileName = "photo.jpg";
@@ -53,11 +54,18 @@ public class ComposeActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
+        compose_toolbar_cancel_button = findViewById(R.id.compose_toolbar_cancel_button);
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchCamera();
+            }
+        });
+        compose_toolbar_cancel_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
