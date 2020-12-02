@@ -3,12 +3,166 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/scrollProfile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/userHeadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp">
+
+                <ImageView
+                    android:id="@+id/bannerImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="@color/colorLightGreyTransparent" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/ivProfileImageP"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="85dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:elevation="12dp"
+                    android:scaleType="center"
+                    app:fabSize="normal"
+                    app:srcCompat="@drawable/ic_profile"
+                    android:layout_marginLeft="16dp" />
+
+                <!--HELP FROM STACK OVERFLOW: https://stackoverflow.com/questions/32882742/android-how-to-change-size-of-appfabsize-normal-for-floating-action-button-->
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlUserP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/banner"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="4dp">
+
+                <TextView
+                    android:id="@+id/tvUserNameP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="tvUserNameP"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tvUserDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/tvUserNameP"
+                    android:layout_marginTop="12dp"
+                    android:autoLink="all"
+                    android:text="tvUserDescription"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:id="@+id/tvSinceP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/tvUserDescription"
+                    android:layout_marginTop="12dp"
+                    android:text="tvSinceP"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="start" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/lUserFollows"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlUserP"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lMainSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/userHeadline"
+            android:background="@color/colorDarkLine">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/colorDarkLineDarker" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorDarkLineDarker" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/flContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/lMainSeparator"
+            android:elevation="8dp"></FrameLayout>
+        <!-- <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvTweetP"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/lMainSeparator"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" /> -->
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="16dp"
+        android:visibility="visible" />
 
 </FrameLayout>

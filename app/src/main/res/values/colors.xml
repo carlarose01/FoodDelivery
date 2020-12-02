@@ -7,4 +7,6 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="colorLightGreyTransparent">#99d4e9fc</color>
+    <color name="colorDarkLine">#0c1217</color>
+    <color name="colorDarkLineDarker">#05080a</color>
 </resources>
