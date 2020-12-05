@@ -39,7 +39,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 
 - [x] User should be able to react (like) to others' posts
 - [x] User should be able to reply to others' posts
-- [x] User should be able to filter feed based on safety, events, etc.
+- [ ] User should be able to filter feed based on safety, events, etc.
 
 ### 2. Screen Archetypes
 
