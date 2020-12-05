@@ -159,5 +159,8 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
 
-### Sprint 1 gif
+### Sprint 1 Gif
 <img src="https://github.com/carlarose01/SafeCrowd/blob/master/sprint.gif" width=300>
+
+### Sprint 2 Gif
+<img src="https://github.com/carlarose01/SafeCrowd/blob/master/sprint2.gif" width=300>
