@@ -24,7 +24,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.safecrowd.fragments.AlertFragment;
-import com.example.safecrowd.fragments.ComposeFragment;
 import com.example.safecrowd.fragments.LocationFragment;
 import com.example.safecrowd.fragments.ProfileFragment;
 import com.example.safecrowd.fragments.PostFragment;
@@ -44,23 +43,17 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
 
-    final FragmentManager fragmentManager = getSupportFragmentManager();
+    public static FragmentManager fragmentManager;
     private BottomNavigationView bottomNavigationView;
-    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        fragmentManager = getSupportFragmentManager();
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-//        fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new ComposeFragment();
-//            }
-//        });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -89,5 +82,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
 
+    public static void goUserProfile(ParseUser user) {
+        Fragment fragment = new ProfileFragment(user);
+        fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+    }
 
 }

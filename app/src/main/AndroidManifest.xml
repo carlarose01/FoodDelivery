@@ -42,6 +42,9 @@
         </activity>
         <activity android:name=".ComposeActivity"
             android:theme="@style/Theme.SafeCrowd"></activity>
+        <activity android:name=".PostDetailsActivity" /> <!-- make sure within the application tag, otherwise app will crash with XmlResourceParser errors -->
+        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".OpeningActivity"></activity>
     </application>
 
 </manifest>

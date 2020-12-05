@@ -98,21 +98,21 @@
                     android:textStyle="bold"
                     android:layout_alignParentLeft="true"
                     android:gravity="start" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvSinceP"
+                    android:id="@+id/btnEdit"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:text="edit" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnEdit"
+                    android:text="logout"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/btnLogout" />
             </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/lUserFollows"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rlUserP"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp">
-
-            </LinearLayout>
-
 
         </RelativeLayout>
 

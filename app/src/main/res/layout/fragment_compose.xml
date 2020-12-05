@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ComposeFragment" >
 
+    <!--        move toolbar down-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/compose_toolbar"
         android:layout_width="match_parent"
@@ -97,6 +98,18 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
             app:icon="@drawable/ic_camera" />
 
+        <Button
+            android:id="@+id/btnGallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivPostImage"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="-149dp"
+            android:layout_toEndOf="@+id/btnCaptureImage"
+            android:text="Open Gallery"
+            android:layout_marginLeft="36dp"
+            android:layout_toRightOf="@+id/btnCaptureImage" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -119,6 +132,7 @@
             tools:layout_editor_absoluteX="280dp"
             tools:layout_editor_absoluteY="52dp"
             android:layout_alignParentRight="true" />
+<!--        attach to top of keyboard-->
 
     </RelativeLayout>
 
@@ -131,16 +145,5 @@
         android:layout_margin="16dp"
         android:visibility="invisible" />
 
-
-
-
-
-<!--    <Button-->
-<!--        android:id="@+id/btnSubmit"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Post"-->
-<!--        android:backgroundTint="@color/yellow"-->
-<!--        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>-->
 
 </RelativeLayout>

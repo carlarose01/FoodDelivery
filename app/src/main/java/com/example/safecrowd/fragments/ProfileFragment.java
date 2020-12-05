@@ -1,5 +1,6 @@
 package com.example.safecrowd.fragments;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -11,13 +12,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.safecrowd.EditProfileActivity;
+import com.example.safecrowd.OpeningActivity;
 import com.example.safecrowd.R;
+import com.example.safecrowd.models.Post;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.Parse;
 import com.parse.ParseUser;
@@ -46,11 +51,17 @@ public class ProfileFragment extends Fragment {
     private TextView tvSinceP;
     private TextView tvUserDescription;
     private FloatingActionButton ivProfileImageP;
+    Button btnEdit;
+    Button btnLogout;
 
     private ParseUser user;
 
     public ProfileFragment() {
         // Required empty public constructor
+    }
+
+    public ProfileFragment(ParseUser user) {
+        this.user = user;
     }
 
     @Override
@@ -77,17 +88,55 @@ public class ProfileFragment extends Fragment {
         tvUserNameP = (TextView) view.findViewById(R.id.tvUserNameP);
         tvSinceP = (TextView) view.findViewById(R.id.tvSinceP);
         tvUserDescription = (TextView) view.findViewById(R.id.tvUserDescription);
+        btnEdit = view.findViewById(R.id.btnEdit);
+        btnLogout = view.findViewById(R.id.btnLogout);
 
         ivProfileImageP = (FloatingActionButton) view.findViewById(R.id.ivProfileImageP);
 
         user = ParseUser.getCurrentUser();
+
+        if (!user.getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
+            btnEdit.setVisibility(View.GONE);
+            btnLogout.setVisibility(View.GONE);
+        }
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goEditProfile();
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseUser.logOut();
+                goOpening();
+            }
+        });
+
         populateUserHeadline(user);
+    }
+
+    private void goOpening() {
+        Intent intent = new Intent(getContext(), OpeningActivity.class);
+        startActivity(intent);
+    }
+
+    public void goEditProfile() {
+        Intent intent = new Intent(getContext(), EditProfileActivity.class);
+        getContext().startActivity(intent);
     }
 
     public void populateUserHeadline(final ParseUser user) {
         // populate the screen with info gathered
         tvUserNameP.setText(user.getUsername());
         tvSinceP.setText("On SafeCrowd since " + user.getCreatedAt());
+        if (user.getString(Post.KEY_BIO) == null) {
+            tvUserDescription.setVisibility(View.GONE);
+        } else {
+            tvUserDescription.setText(user.getString(Post.KEY_BIO));
+        }
 //        tvUserDescription.setText(user.getEmail()); // dont have description
 //        if (user.getEmail().length() <= 1) { // if description is short dont show
 //            tvUserDescription.setVisibility(View.GONE);

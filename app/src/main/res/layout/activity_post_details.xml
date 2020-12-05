@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.example.safecrowd.PostDetailsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tweet_detail_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ActionBar_Twitter"
+        app:popupTheme="@style/Theme.AppCompat.DayNight"
+        android:elevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/tweet_detail_toolbar_back_button"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_back_button_accent"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:id="@+id/tweet_detail_toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:gravity="center"
+                android:text="Tweet"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/tweet_detail_toolbar_back_button"
+                android:layout_toRightOf="@+id/tweet_detail_toolbar_back_button" />
+        </RelativeLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tweet_detail_toolbar">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rlUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="8dp"
+                    android:layout_alignParentLeft="true">
+
+                    <ImageView
+                        android:id="@+id/ivProfileImageD"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:layout_alignParentStart="true"
+                        app:srcCompat="@drawable/ic_profile_black"
+                        android:layout_alignParentLeft="true" />
+
+                    <TextView
+                        android:id="@+id/tvNameD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_toEndOf="@+id/ivProfileImageD"
+                        android:text="tvNameD"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_toRightOf="@+id/ivProfileImageD" />
+
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/vtSeparator1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/rlUser"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorDarkLine" />
+
+                <!-- TWEET BODY -->
+                <!-- TWEET BODY -->
+                <!-- TWEET BODY -->
+                <RelativeLayout
+                    android:id="@+id/rlBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/vtSeparator1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_alignParentLeft="true">
+
+                    <TextView
+                        android:id="@+id/tvBodyD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:autoLink="all"
+                        android:text="tvBodyD"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:layout_alignParentLeft="true" />
+
+                    <ImageView
+                        android:id="@+id/ivImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvBodyD"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="12dp"
+                        android:adjustViewBounds="true"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/ic_profile_black" />
+
+                    <TextView
+                        android:id="@+id/tvCreatedAtD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ivImage"
+                        android:layout_marginTop="4dp"
+                        android:text="tvCreatedAtD"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/vtSeparator2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/rlBody"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorDarkLine" />
+
+                <!-- TWEET INFO -->
+                <!-- TWEET INFO -->
+                <!-- TWEET INFO -->
+                <RelativeLayout
+                    android:id="@+id/rlTweetsInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/vtSeparator2"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_alignParentLeft="true">
+
+                    <TextView
+                        android:id="@+id/tvLikesD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginStart="16dp"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="16dp" />
+
+                    <TextView
+                        android:id="@+id/tvLikesText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/tvLikesD"
+                        android:text="Likes"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:layout_toRightOf="@+id/tvLikesD" />
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/vtSeparator3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/rlTweetsInfo"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorDarkLine" />
+
+                <!-- BUTTONS -->
+                <!-- BUTTONS -->
+                <!-- BUTTONS -->
+                <LinearLayout
+                    android:id="@+id/rlButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/vtSeparator3"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_alignParentLeft="true">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/ibReplyD"
+                            style="@android:style/Widget.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:adjustViewBounds="false"
+                            android:background="#00000000"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/ic_reply"
+                            android:layout_alignParentRight="true" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/ivLoveTweetD"
+                            style="@android:style/Widget.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:adjustViewBounds="false"
+                            android:background="#00000000"
+                            android:scaleType="fitCenter"
+                            app:srcCompat="@drawable/ic_heart_clear_light_blue_svg"
+                            android:layout_alignParentRight="true" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="267dp"
+                    android:layout_below="@+id/vtSeparator4"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="-2dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="0dp" />
+
+                <View
+                    android:id="@+id/vtSeparator4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/rlButtons"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorDarkLine" />
+                <!--</ScrollView>-->
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+</RelativeLayout>

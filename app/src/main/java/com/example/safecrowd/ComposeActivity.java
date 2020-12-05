@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
+import com.example.safecrowd.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -26,22 +26,21 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import org.json.JSONException;
-
 import java.io.File;
 import java.util.List;
-
-import okhttp3.Headers;
 
 public class ComposeActivity extends AppCompatActivity {
 
     public static final String TAG = "ComposeActivity";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
+    private static final int PICK_PHOTO_CODE = 11;
     private EditText etDescription;
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
+    private Button btnGallery;
     private ImageView compose_toolbar_cancel_button;
+    public boolean mediaFound = false;
 
     private File photoFile;
     public String photoFileName = "photo.jpg";
@@ -55,6 +54,14 @@ public class ComposeActivity extends AppCompatActivity {
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
         compose_toolbar_cancel_button = findViewById(R.id.compose_toolbar_cancel_button);
+        btnGallery = findViewById(R.id.btnGallery);
+
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onPickPhoto(view);
+            }
+        });
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +69,7 @@ public class ComposeActivity extends AppCompatActivity {
                 launchCamera();
             }
         });
+
         compose_toolbar_cancel_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,12 +86,12 @@ public class ComposeActivity extends AppCompatActivity {
                     Toast.makeText(ComposeActivity.this, "Description cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
-//                if (photoFile == null || ivPostImage.getDrawable() == null) {
-////                    Toast.makeText(ComposeActivity.this, "There is no image", Toast.LENGTH_SHORT).show();
-////                    return;
-////                }
+                if (photoFile == null || ivPostImage.getDrawable() == null) {
+                    mediaFound = false;
+                    Log.i(TAG, "media false");
+                }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(description, currentUser, photoFile);
+                savePost(description, currentUser, photoFile, mediaFound);
 
             }
         });
@@ -106,6 +114,28 @@ public class ComposeActivity extends AppCompatActivity {
         if (intent.resolveActivity(ComposeActivity.this.getPackageManager()) != null) {
             // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+        }
+    }
+
+    // Trigger gallery selection for a photo
+    public void onPickPhoto(View view) {
+        // Create intent for picking a photo from the gallery
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+//        // Create a File reference for future access
+//        photoFile = getPhotoFileUri(photoFileName);
+//        // wrap File object into a content provider
+//        // required for API >= 24
+//        // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
+//        Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.parstagram.fileprovider", photoFile);
+//        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
+        if (intent.resolveActivity(ComposeActivity.this.getPackageManager()) != null) {
+            // Bring up gallery to select a photo
+            startActivityForResult(intent, PICK_PHOTO_CODE);
         }
     }
 
@@ -142,9 +172,12 @@ public class ComposeActivity extends AppCompatActivity {
         return file;
     }
 
-    private void savePost(String caption, ParseUser currentUser, File photoFile) {
+    private void savePost(String caption, ParseUser currentUser, File photoFile, boolean mediaFound) {
         Post post = new Post();
         post.setCaption(caption);
+        if (mediaFound) {
+            post.setMediaFound(true);
+        }
         if (photoFile != null) {
             post.setImage(new ParseFile(photoFile));
         }

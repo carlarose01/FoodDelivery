@@ -2,6 +2,8 @@ package com.example.safecrowd;
 
 import android.app.Application;
 
+import com.example.safecrowd.models.Comment;
+import com.example.safecrowd.models.Post;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
@@ -13,6 +15,7 @@ public class ParseApplication extends Application {
         super.onCreate();
 
         ParseObject.registerSubclass(Post.class);
+        ParseObject.registerSubclass(Comment.class);
 
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("jpyd5CaQ2R7kePIDUMzuugJ2TrU49gPJCqsriZ3p")
