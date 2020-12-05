@@ -75,7 +75,7 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        pb = (ProgressBar) view.findViewById(R.id.pbLoading);
+        //pb = (ProgressBar) view.findViewById(R.id.pbLoading);
 
         userId = getActivity().getIntent().getLongExtra("user_uid", -1);
         screenName = getActivity().getIntent().getStringExtra("screenName");

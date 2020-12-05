@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.ComposeFragment" >
+    tools:context=".ComposeActivity" >
 
     <!--        move toolbar down-->
     <androidx.appcompat.widget.Toolbar
@@ -100,6 +100,7 @@
 
         <Button
             android:id="@+id/btnGallery"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ivPostImage"
@@ -110,6 +111,26 @@
             android:layout_marginLeft="36dp"
             android:layout_toRightOf="@+id/btnCaptureImage" />
 
+        <Button
+            android:id="@+id/btnLocation"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivPostImage"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="-149dp"
+            android:layout_toEndOf="@+id/btnGallery"
+            android:text="location"
+            android:layout_marginLeft="36dp"
+            android:layout_toRightOf="@+id/btnCaptureImage" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </FrameLayout>
+
+<!--        move this above buttons-->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"

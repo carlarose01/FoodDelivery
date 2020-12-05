@@ -3,11 +3,15 @@ package com.example.safecrowd;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -18,15 +22,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.safecrowd.fragments.LocationFragment;
 import com.example.safecrowd.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class ComposeActivity extends AppCompatActivity {
@@ -36,12 +43,14 @@ public class ComposeActivity extends AppCompatActivity {
     private static final int PICK_PHOTO_CODE = 11;
     private EditText etDescription;
     private Button btnCaptureImage;
+    private Button btnLocation;
     private ImageView ivPostImage;
     private Button btnSubmit;
     private Button btnGallery;
     private ImageView compose_toolbar_cancel_button;
-    public boolean mediaFound = false;
+    public boolean locationAdded = false;
 
+    ParseFile parseFile;
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
@@ -55,6 +64,7 @@ public class ComposeActivity extends AppCompatActivity {
         btnSubmit = findViewById(R.id.btnSubmit);
         compose_toolbar_cancel_button = findViewById(R.id.compose_toolbar_cancel_button);
         btnGallery = findViewById(R.id.btnGallery);
+        btnLocation = findViewById(R.id.btnLocation);
 
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +87,15 @@ public class ComposeActivity extends AppCompatActivity {
             }
         });
 
+        // launch location fragment to drop pin
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                locationAdded = true;
+                Log.i(TAG, "button clicked "+ locationAdded);
+            }
+        });
+
         //queryPosts();
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,11 +106,11 @@ public class ComposeActivity extends AppCompatActivity {
                     return;
                 }
                 if (photoFile == null || ivPostImage.getDrawable() == null) {
-                    mediaFound = false;
+//                    mediaFound = false;
                     Log.i(TAG, "media false");
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(description, currentUser, photoFile, mediaFound);
+                savePost(description, currentUser, photoFile, locationAdded);
 
             }
         });
@@ -152,9 +171,39 @@ public class ComposeActivity extends AppCompatActivity {
             } else { // Result was a failure
                 Toast.makeText(ComposeActivity.this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
+        } else if ((data != null) && requestCode == PICK_PHOTO_CODE) {
+            Uri photoUri = data.getData();
+            // Load the image located at photoUri into selectedImage
+            Bitmap selectedImage = loadFromUri(photoUri);
+            parseFile = new ParseFile(new File(photoUri.getPath()));
+            // Load the selected image into a preview
+            ivPostImage.setImageBitmap(selectedImage);
+
         }
     }
-
+    public Bitmap loadFromUri(Uri photoUri) {
+        Bitmap image = null;
+        try {
+            // check version of Android on device
+            if(Build.VERSION.SDK_INT > 27){
+                // on newer versions of Android, use the new decodeBitmap method
+                ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), photoUri);
+                image = ImageDecoder.decodeBitmap(source);
+                photoFile = new File(photoUri.getPath());
+//                image = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
+//                photoFile = new File(photoFileName);
+//                OutputStream os = new BufferedOutputStream(new FileOutputStream(photoFile));
+//                image.compress(Bitmap.CompressFormat.JPEG, 100, os);
+//                os.close();
+            } else {
+                // support older versions of Android by using getBitmap
+                image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoUri);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
+    }
     private File getPhotoFileUri(String photoFileName) {
         // Get safe storage directory for photos
         // Use `getExternalFilesDir` on Context to access package-specific directories.
@@ -172,15 +221,17 @@ public class ComposeActivity extends AppCompatActivity {
         return file;
     }
 
-    private void savePost(String caption, ParseUser currentUser, File photoFile, boolean mediaFound) {
+    private void savePost(String caption, ParseUser currentUser, File photoFile, boolean locationAdded) {
         Post post = new Post();
         post.setCaption(caption);
-        if (mediaFound) {
-            post.setMediaFound(true);
-        }
         if (photoFile != null) {
             post.setImage(new ParseFile(photoFile));
         }
+//        if (locationAdded) {
+//            post.setKeyLocation(currentUser.getParseGeoPoint("location")); // go to map activity and onclick
+//            Log.i(TAG, "location added " + post.getParseGeoPoint("location"));
+//            // this should set a text to the location
+//        }
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
             @Override

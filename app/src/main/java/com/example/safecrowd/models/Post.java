@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -30,7 +31,8 @@ public class Post extends ParseObject {
     public static final String KEY_ID = "objectId";
     public static final String KEY_PROFILEPIC = "profileImage";
     public static final String KEY_BIO = "bio";
-    private static final String KEY_LIKES = "likes";
+    public static final String KEY_LIKES = "likes";
+    public static final String KEY_LOCATION = "location";
     private static final String TAG = "Post";
     public boolean mediaFound = true; // can set to true if image is provided
 
@@ -61,7 +63,9 @@ public class Post extends ParseObject {
         put(KEY_USER, parseUser);
     }
 
-//    public Date getCreatedAt() { return getDate(KEY_CREATED); }
+    public void setKeyLocation(ParseGeoPoint geoPoint) { put(KEY_LOCATION, geoPoint); }
+
+    public ParseGeoPoint getKeyLocation() { return getParseGeoPoint(KEY_LOCATION); }
 
     public int getCommentsCount() { return getInt(KEY_COMMENTS_COUNT); }
 
