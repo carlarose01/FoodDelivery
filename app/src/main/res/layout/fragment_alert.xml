@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.AlertFragment"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
+
+    <!-- Main Content View -->
     <!--        move toolbar down-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/compose_toolbar"
@@ -13,7 +13,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:theme="@style/Theme.SafeCrowd"
-        app:popupTheme="@style/Theme.AppCompat.DayNight">
+        card_view:popupTheme="@style/Theme.AppCompat.DayNight">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -43,65 +43,12 @@
                 android:adjustViewBounds="true"
                 android:gravity="center"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_profile"
+                card_view:srcCompat="@drawable/ic_profile"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="16dp" />
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp">
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/ivProfileImage"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        android:elevation="12dp"
-        android:scaleType="center"
-        app:fabSize="normal"
-        app:srcCompat="@drawable/ic_profile"
-        android:layout_marginLeft="16dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="911"
-            android:paddingTop="50dp"
-            android:paddingLeft="30dp" />
-<!--   add phone call button, change profile to imageview    -->
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="20dp">
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/ivProfileImage2"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        android:elevation="12dp"
-        android:scaleType="center"
-        app:fabSize="normal"
-        app:srcCompat="@drawable/ic_profile"
-        android:layout_marginLeft="16dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="911"
-        android:paddingTop="50dp"
-        android:paddingLeft="30dp" />
-</LinearLayout>
 
 
-</LinearLayout>
+
+</androidx.cardview.widget.CardView>

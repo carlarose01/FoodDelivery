@@ -91,7 +91,7 @@ public class ComposeActivity extends AppCompatActivity {
         btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                locationAdded = true;
+                // grab current location populate location bubble
                 Log.i(TAG, "button clicked "+ locationAdded);
             }
         });
