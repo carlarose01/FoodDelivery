@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.example.safecrowd.PostDetailsActivity">
+    tools:context="com.example.safecrowd.activity.PostDetailsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tweet_detail_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ActionBar_Twitter"
+        android:background="@color/orange"
         app:popupTheme="@style/Theme.AppCompat.DayNight"
-        android:elevation="4dp">
+        android:elevation="4dp"
+        android:layout_marginTop="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -36,9 +36,10 @@
                 android:id="@+id/tweet_detail_toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:layout_marginLeft="18dp"
                 android:gravity="center"
-                android:text="Tweet"
+                android:text="Post"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_alignParentTop="true"
@@ -135,6 +136,7 @@
 
                     <ImageView
                         android:id="@+id/ivImage"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tvBodyD"
@@ -230,7 +232,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center">
+                        android:gravity="left">
 
                         <ImageView
                             android:id="@+id/ibReplyD"
@@ -243,20 +245,14 @@
                             android:background="#00000000"
                             android:scaleType="fitCenter"
                             app:srcCompat="@drawable/ic_reply"
-                            android:layout_alignParentRight="true" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
+                            android:layout_alignParentRight="true"
+                            android:paddingLeft="16dp"/>
                         <ImageView
                             android:id="@+id/ivLoveTweetD"
                             style="@android:style/Widget.ImageButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="20dp"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentTop="true"
                             android:adjustViewBounds="false"
@@ -265,6 +261,26 @@
                             app:srcCompat="@drawable/ic_heart_clear_light_blue_svg"
                             android:layout_alignParentRight="true" />
                     </LinearLayout>
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:gravity="center">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/ivLoveTweetD"-->
+<!--                            style="@android:style/Widget.ImageButton"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentEnd="true"-->
+<!--                            android:layout_alignParentTop="true"-->
+<!--                            android:adjustViewBounds="false"-->
+<!--                            android:background="#00000000"-->
+<!--                            android:scaleType="fitCenter"-->
+<!--                            app:srcCompat="@drawable/ic_heart_clear_light_blue_svg"-->
+<!--                            android:layout_alignParentRight="true" />-->
+<!--                    </LinearLayout>-->
 
                 </LinearLayout>
 

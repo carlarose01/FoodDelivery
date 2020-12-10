@@ -1,15 +1,21 @@
-package com.example.safecrowd;
+package com.example.safecrowd.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,9 +26,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.safecrowd.fragments.LocationFragment;
+import com.example.safecrowd.R;
 import com.example.safecrowd.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -35,12 +42,14 @@ import com.parse.SaveCallback;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class ComposeActivity extends AppCompatActivity {
 
     public static final String TAG = "ComposeActivity";
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private static final int PICK_PHOTO_CODE = 11;
+    private static final int REQUEST_LOCATION = 1;
     private EditText etDescription;
     private Button btnCaptureImage;
     private Button btnLocation;
@@ -48,16 +57,25 @@ public class ComposeActivity extends AppCompatActivity {
     private Button btnSubmit;
     private Button btnGallery;
     private ImageView compose_toolbar_cancel_button;
-    public boolean locationAdded = false;
+    TextView tvLocation;
+
 
     ParseFile parseFile;
     private File photoFile;
     public String photoFileName = "photo.jpg";
 
+    LocationManager locationManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_compose);
+        // This example uses decor view, but you can use any visible view.
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_LOW_PROFILE;
+        decorView.setSystemUiVisibility(uiOptions);
+
+
         etDescription = findViewById(R.id.etDescription);
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
@@ -65,6 +83,8 @@ public class ComposeActivity extends AppCompatActivity {
         compose_toolbar_cancel_button = findViewById(R.id.compose_toolbar_cancel_button);
         btnGallery = findViewById(R.id.btnGallery);
         btnLocation = findViewById(R.id.btnLocation);
+        tvLocation = findViewById(R.id.tvLocation);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +112,11 @@ public class ComposeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // grab current location populate location bubble
-                Log.i(TAG, "button clicked "+ locationAdded);
+                ParseGeoPoint current = getCurrentUserLocation();
+                String address = convertLatLong(current.getLatitude(), current.getLongitude());
+                tvLocation.setVisibility(View.VISIBLE);
+                tvLocation.setText(address);
+                Log.i(TAG, "button clicked "+ address);
             }
         });
 
@@ -110,7 +134,7 @@ public class ComposeActivity extends AppCompatActivity {
                     Log.i(TAG, "media false");
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(description, currentUser, photoFile, locationAdded);
+                savePost(description, currentUser, photoFile);
 
             }
         });
@@ -221,7 +245,7 @@ public class ComposeActivity extends AppCompatActivity {
         return file;
     }
 
-    private void savePost(String caption, ParseUser currentUser, File photoFile, boolean locationAdded) {
+    private void savePost(String caption, ParseUser currentUser, File photoFile) {
         Post post = new Post();
         post.setCaption(caption);
         if (photoFile != null) {
@@ -265,6 +289,74 @@ public class ComposeActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private ParseGeoPoint getCurrentUserLocation() {
+        // saving the currentUserLocation to allow it's return
+        saveCurrentUserLocation();
+
+        // finding currentUser
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        // if it's not possible to find the user, return to login
+//        if (currentUser == null) {
+//            alertDisplayer("Well... you're not logged in...","Login first!");
+//            Intent intent = new Intent(LocationFragment.this, LoginActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
+//        }
+        // otherwise, return the current user location
+        return currentUser.getParseGeoPoint("Location");
+    }
+
+    private void saveCurrentUserLocation() {
+        // requesting permission to get user's location
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        }
+        else {
+            // getting last know user's location
+            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+            // checking if the location is null
+            if(location != null){
+                // if it isn't, save it to Back4App Dashboard
+                ParseGeoPoint currentUserLocation = new ParseGeoPoint(location.getLatitude(), location.getLongitude());
+
+                ParseUser currentUser = ParseUser.getCurrentUser();
+
+                if (currentUser != null) {
+                    currentUser.put("Location", currentUserLocation);
+                    currentUser.saveInBackground();
+                } else {
+                    // do something like coming back to the login activity
+                }
+            }
+            else {
+                // if it is null, do something like displaying error and coming back to the menu activity
+            }
+        }
+    }
+
+    private String convertLatLong(double latitude, double longitude) {
+        Geocoder geocoder;
+        List<Address> addresses = null;
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        try {
+            addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+        String city = addresses.get(0).getLocality();
+        String state = addresses.get(0).getAdminArea();
+        String country = addresses.get(0).getCountryName();
+        String postalCode = addresses.get(0).getPostalCode();
+        String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+
+        return address;
     }
 
 }

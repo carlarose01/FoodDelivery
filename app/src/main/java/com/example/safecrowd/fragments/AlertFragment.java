@@ -35,21 +35,21 @@ public class AlertFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.alert_web, container, false);
+        return inflater.inflate(R.layout.fragment_alert, container, false);
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        myWebView = (WebView) view.findViewById(R.id.webview);
-        // Configure related browser settings
-        myWebView.getSettings().setLoadsImagesAutomatically(true);
-        myWebView.getSettings().setJavaScriptEnabled(true);
-        myWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        // Configure the client to use when opening URLs
-        myWebView.setWebViewClient(new WebViewClient());
-        // Load the initial URL
-        myWebView.loadUrl("http://www.example.com");
-    }
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//
+//        myWebView = (WebView) view.findViewById(R.id.webview);
+//        // Configure related browser settings
+//        myWebView.getSettings().setLoadsImagesAutomatically(true);
+//        myWebView.getSettings().setJavaScriptEnabled(true);
+//        myWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+//        // Configure the client to use when opening URLs
+//        myWebView.setWebViewClient(new WebViewClient());
+//        // Load the initial URL
+//        myWebView.loadUrl("http://www.example.com");
+//    }
 }

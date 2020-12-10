@@ -13,7 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.safecrowd.PostDetailsActivity;
+import com.example.safecrowd.activity.MainActivity;
+import com.example.safecrowd.activity.PostDetailsActivity;
 import com.example.safecrowd.R;
 import com.example.safecrowd.models.Post;
 import com.parse.ParseException;
@@ -101,10 +102,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 ivImage.setVisibility(View.VISIBLE);
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
-            if (!post.getMediaFound()) {
-                ivImage.setVisibility(View.GONE);
-                Log.i(TAG, "should be gone");
-            }
+
             ParseFile profile = post.getProfile();
             if (profile != null) {
                 Glide.with(context).load(profile.getUrl()).circleCrop().into(ivProfile);
@@ -116,18 +114,18 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             } else {
                 Glide.with(context).load(R.drawable.ic_heart_clear_light_blue_svg).into(ivLike);
             }
-//            ivProfile.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    MainActivity.goUserProfile(post.getUser());
-//                }
-//            });
-//            tvName.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    MainActivity.goUserProfile(post.getUser());
-//                }
-//            });
+            ivProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MainActivity.goUserProfile(post.getUser());
+                }
+            });
+            tvName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MainActivity.goUserProfile(post.getUser());
+                }
+            });
             ivComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

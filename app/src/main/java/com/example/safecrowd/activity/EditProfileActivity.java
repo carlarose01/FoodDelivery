@@ -1,4 +1,4 @@
-package com.example.safecrowd;
+package com.example.safecrowd.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import com.bumptech.glide.Glide;
-import com.example.safecrowd.models.Post;
+import com.example.safecrowd.R;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;

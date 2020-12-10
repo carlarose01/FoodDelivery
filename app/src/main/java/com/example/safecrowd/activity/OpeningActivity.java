@@ -1,4 +1,4 @@
-package com.example.safecrowd;
+package com.example.safecrowd.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.safecrowd.R;
+import com.example.safecrowd.activity.LoginActivity;
+import com.example.safecrowd.activity.MainActivity;
 import com.parse.ParseUser;
 
 public class OpeningActivity extends AppCompatActivity {

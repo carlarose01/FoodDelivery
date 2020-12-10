@@ -17,7 +17,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.safecrowd.models.Comment;
 import com.example.safecrowd.models.Post;
-import com.example.safecrowd.PostDetailsActivity;
+import com.example.safecrowd.activity.PostDetailsActivity;
 import com.example.safecrowd.R;
 import com.parse.ParseException;
 import com.parse.ParseUser;

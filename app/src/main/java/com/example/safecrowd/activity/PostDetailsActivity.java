@@ -1,4 +1,4 @@
-package com.example.safecrowd;
+package com.example.safecrowd.activity;
 
 import android.os.Bundle;
 
@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.safecrowd.R;
 import com.example.safecrowd.adapters.CommentAdapter;
 import com.example.safecrowd.fragments.ComposeDialogFragment;
 import com.example.safecrowd.models.Comment;
@@ -41,7 +42,6 @@ public class PostDetailsActivity extends AppCompatActivity implements ComposeDia
     ImageView ivProfile;
     TextView tvLikeNum;
     ImageView tweet_detail_toolbar_back_button;
-    boolean tMediaFound;
 
     static Post post;
 
@@ -60,7 +60,7 @@ public class PostDetailsActivity extends AppCompatActivity implements ComposeDia
         ivProfile = findViewById(R.id.ivProfileImageD);
         tvLikeNum = findViewById(R.id.tvLikesD);
         tweet_detail_toolbar_back_button = (ImageView) findViewById(R.id.tweet_detail_toolbar_back_button);
-        tMediaFound = getIntent().getBooleanExtra("tMediaFound", false);
+        //tMediaFound = getIntent().getBooleanExtra("tMediaFound", false);
 
         tweet_detail_toolbar_back_button.setOnClickListener(new View.OnClickListener() {
             @Override

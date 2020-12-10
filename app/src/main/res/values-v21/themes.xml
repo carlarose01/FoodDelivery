@@ -3,19 +3,19 @@
 
     <style name="Theme.SafeCrowd" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimary</item>
-        <item name="colorOnPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/green</item>
+        <item name="colorOnPrimary">@color/green</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/colorAccent</item>
-        <item name="colorSecondaryVariant">@color/colorAccent</item>
-        <item name="colorOnSecondary">@color/colorAccent</item>
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/blue</item>
+        <item name="colorOnSecondary">@color/blue</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="Theme.SafeCrowd.LauncherScreen">
-        <item name="android:windowBackground">@drawable/background_gradient</item>
-    </style>
+<!--    <style name="Theme.SafeCrowd.LauncherScreen">-->
+<!--        <item name="android:windowBackground"></item>-->
+<!--    </style>-->
 </resources>

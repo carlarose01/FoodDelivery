@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import android.view.animation.BounceInterpolator;
 import android.widget.Toast;
 
 import com.example.safecrowd.R;
+import com.example.safecrowd.models.Post;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -36,8 +38,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import java.util.List;
 
 import static androidx.core.content.ContextCompat.getSystemService;
 
@@ -48,11 +55,11 @@ import static androidx.core.content.ContextCompat.getSystemService;
  */
 public class LocationFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
+    private static final String TAG = "LocationFragment";
     private GoogleMap mMap;
     private static final int REQUEST_LOCATION = 1;
 
     LocationManager locationManager;
-    private FusedLocationProviderClient fusedLocationClient;
 
     @Nullable
     @Override
@@ -63,13 +70,16 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // This example uses decor view, but you can use any visible view.
+        View decorView = getActivity().getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_LOW_PROFILE;
+        decorView.setSystemUiVisibility(uiOptions);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
     }
 
     /**
@@ -89,17 +99,14 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
 
-        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions()
-//                .position(sydney)
-//                .title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
         // set to current location first
         showCurrentUserInMap(mMap);
+
         // add click marker to add location
         googleMap.setOnMapClickListener(this);
+
+        // query post locations
+        queryPosts();
 
         // open post
 //        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -110,15 +117,45 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
 //        });
     }
 
+    private void queryPosts() {
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_USER);
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue getting posts", e);
+                    return;
+                }
+                for(Post post : posts) {
+                    if(post.getKeyLocation() != null) {
+                        LatLng curr = new LatLng(post.getKeyLocation().getLatitude(), post.getKeyLocation().getLongitude());
+                        Log.i(TAG, "Post: " + post.getCaption() + ", Location: " + post.getKeyLocation());
+                        mMap.addMarker(new MarkerOptions()
+                                .position(curr)
+                                .title(post.getCaption())
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                        );
+                        //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(curr, 5));
+                    }
+                }
+
+            }
+        });
+    }
+
     private void showCurrentUserInMap(GoogleMap googleMap) {
         ParseGeoPoint currentUserLocation = getCurrentUserLocation();
 
         // creating a marker in the map showing the current user location
         LatLng currentUser = new LatLng(currentUserLocation.getLatitude(), currentUserLocation.getLongitude());
-        googleMap.addMarker(new MarkerOptions().position(currentUser).title(ParseUser.getCurrentUser().getUsername()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+        googleMap.addMarker(new MarkerOptions()
+                .position(currentUser)
+                .title(ParseUser.getCurrentUser().getUsername())
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
         // zoom the map to the currentUserLocation
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentUser, 5));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentUser, 12));
     }
 
     private ParseGeoPoint getCurrentUserLocation() {

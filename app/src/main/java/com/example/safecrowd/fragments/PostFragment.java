@@ -1,6 +1,7 @@
 package com.example.safecrowd.fragments;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,8 +15,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
-import com.example.safecrowd.ComposeActivity;
+import com.example.safecrowd.activity.ComposeActivity;
 import com.example.safecrowd.adapters.PostsAdapter;
 import com.example.safecrowd.R;
 import com.example.safecrowd.models.Post;
@@ -53,6 +55,17 @@ public class PostFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // If the Android version is lower than Jellybean, use this call to hide
+        // the status bar.
+        if (Build.VERSION.SDK_INT < 16) {
+            getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        // This example uses decor view, but you can use any visible view.
+        View decorView = getActivity().getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_LOW_PROFILE;
+        decorView.setSystemUiVisibility(uiOptions);
+
         fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

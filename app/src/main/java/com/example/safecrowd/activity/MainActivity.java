@@ -1,4 +1,4 @@
-package com.example.safecrowd;
+package com.example.safecrowd.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,12 +17,14 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.safecrowd.R;
 import com.example.safecrowd.fragments.AlertFragment;
 import com.example.safecrowd.fragments.LocationFragment;
 import com.example.safecrowd.fragments.ProfileFragment;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         fragmentManager = getSupportFragmentManager();

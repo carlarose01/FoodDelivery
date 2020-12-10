@@ -9,4 +9,7 @@
     <color name="colorLightGreyTransparent">#99d4e9fc</color>
     <color name="colorDarkLine">#0c1217</color>
     <color name="colorDarkLineDarker">#05080a</color>
+    <color name="orange">#FF9900</color>
+    <color name="blue">#6599FF</color>
+    <color name="green">#097054</color>
 </resources>

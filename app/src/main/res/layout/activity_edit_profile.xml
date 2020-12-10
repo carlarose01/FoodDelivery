@@ -5,34 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="0dp"
-    tools:context=".EditProfileActivity">
+    tools:context=".activity.EditProfileActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/compose_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="69dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_alignParentLeft="true" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/orange"
+        android:theme="@style/Theme.SafeCrowd"
+        app:popupTheme="@style/Theme.AppCompat.DayNight"
+        android:layout_marginTop="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="160dp"
-        android:layout_height="56dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:foregroundGravity="clip_vertical"
-        android:padding="10dp"
-        app:srcCompat="@mipmap/ic_icon" />
+            <TextView
+                android:id="@+id/compose_toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="18dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/compose_toolbar_cancel_button"
+                android:layout_toRightOf="@+id/compose_toolbar_cancel_button"
+                android:gravity="bottom"
+                android:text="Profile"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/compose_toolbar_image"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_profile"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <ImageView
         android:id="@+id/ivProfile"
         android:layout_width="138dp"
         android:layout_height="144dp"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/compose_toolbar"
         android:layout_alignParentStart="true"
         android:layout_marginStart="11dp"
         android:layout_marginTop="13dp"
@@ -40,7 +62,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="11dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,13 +73,14 @@
         android:text="Take New Picture"
         android:textSize="12sp"
         android:layout_marginLeft="21dp"
+        android:backgroundTint="@color/blue"
         android:layout_toRightOf="@+id/ivProfile" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/compose_toolbar"
         android:layout_marginStart="21dp"
         android:layout_marginTop="11dp"
         android:layout_toEndOf="@+id/ivProfile"
@@ -77,7 +100,7 @@
         android:layout_marginLeft="-135dp"
         android:layout_toRightOf="@+id/ivProfile" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etBio"
         android:layout_width="397dp"
         android:layout_height="92dp"
@@ -95,7 +118,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="6dp" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -113,7 +136,7 @@
         android:layout_marginRight="35dp"
         android:layout_toRightOf="@+id/ivProfile" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="54dp"
@@ -124,6 +147,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="15dp"
         android:text="Save Changes"
+        android:backgroundTint="@color/blue"
         android:layout_alignParentLeft="true" />
 
 </RelativeLayout>

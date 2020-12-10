@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.safecrowd.MainActivity;
+import com.example.safecrowd.activity.MainActivity;
 import com.example.safecrowd.R;
 import com.example.safecrowd.models.Comment;
 import com.parse.ParseFile;

@@ -1,37 +1,25 @@
 package com.example.safecrowd.fragments;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.safecrowd.EditProfileActivity;
-import com.example.safecrowd.OpeningActivity;
+import com.example.safecrowd.activity.EditProfileActivity;
+import com.example.safecrowd.activity.OpeningActivity;
 import com.example.safecrowd.R;
 import com.example.safecrowd.models.Post;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.parse.Parse;
 import com.parse.ParseUser;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import okhttp3.internal.http2.Header;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,7 +62,10 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        // This example uses decor view, but you can use any visible view.
+        View decorView = getActivity().getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_LOW_PROFILE;
+        decorView.setSystemUiVisibility(uiOptions);
         //pb = (ProgressBar) view.findViewById(R.id.pbLoading);
 
         userId = getActivity().getIntent().getLongExtra("user_uid", -1);

@@ -34,17 +34,17 @@
             android:layout_toEndOf="@+id/ivProfileImage"
             android:layout_toRightOf="@+id/ivProfileImage">
 
-            <TextView
-                android:id="@+id/tvUsername"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:fontFamily="sans-serif"
-                android:text="tvUserName"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvUsername"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:clickable="true"-->
+<!--                android:fontFamily="sans-serif"-->
+<!--                android:text="tvUserName"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold" />-->
 
             <TextView
                 android:id="@+id/tvScreenName"
@@ -91,6 +91,7 @@
 
         <ImageView
             android:id="@+id/ivImage"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvDescription"
@@ -134,15 +135,6 @@
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_reply"
                 android:layout_alignParentRight="true" />
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
             <ImageView
                 android:id="@+id/ivLoveTweet"
                 style="@android:style/Widget.ImageButton"
@@ -164,6 +156,35 @@
                 android:textColor="@color/black"
                 android:textSize="14sp" />
         </LinearLayout>
+
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/ivLoveTweet"-->
+<!--                style="@android:style/Widget.ImageButton"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:adjustViewBounds="false"-->
+<!--                android:background="#00000000"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                app:srcCompat="@drawable/ic_heart_clear_light_blue_svg"-->
+<!--                android:layout_alignParentRight="true" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvLikes"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="0"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="14sp" />-->
+<!--        </LinearLayout>-->
     </LinearLayout>
 
     <View

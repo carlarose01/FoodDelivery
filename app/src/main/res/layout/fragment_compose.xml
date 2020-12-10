@@ -5,16 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ComposeActivity" >
+    tools:context=".activity.ComposeActivity" >
 
     <!--        move toolbar down-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/compose_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/orange"
         android:theme="@style/Theme.SafeCrowd"
-        app:popupTheme="@style/Theme.AppCompat.DayNight">
+        app:popupTheme="@style/Theme.AppCompat.DayNight"
+        android:layout_marginTop="10dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -86,6 +87,15 @@
             android:typeface="normal"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="2dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etDescription"
+            android:text=""
+            android:paddingTop="30dp"
+            android:drawableLeft="@drawable/ic_location_black"
+            android:visibility="gone"
+            android:id="@+id/tvLocation" />
 
         <Button
             android:id="@+id/btnCaptureImage"
@@ -104,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ivPostImage"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="-149dp"
             android:layout_toEndOf="@+id/btnCaptureImage"
             android:text="Open Gallery"
@@ -117,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ivPostImage"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="-149dp"
             android:layout_toEndOf="@+id/btnGallery"
             android:text="location"
@@ -145,7 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:background="@color/yellow"
+            android:background="@color/blue"
             android:text="Post"
             android:textAllCaps="false"
             android:textColor="@color/white"
