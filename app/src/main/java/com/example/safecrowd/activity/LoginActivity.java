@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.safecrowd.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -19,18 +21,22 @@ import com.parse.ParseUser;
 public class LoginActivity extends AppCompatActivity {
 
     public static final String TAG = "LoginActivity";
-    private EditText etUsername;
-    private EditText etPassword;
+    private TextInputLayout etUsername;
+    private TextInputLayout etPassword;
     private Button btnLogin;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_SafeCrowd);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.sign_in);
 
-        if(ParseUser.getCurrentUser() != null) {
-            goMainActivity();
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            Log.i(TAG, "User is already signed in");
+            // navigate to the main activity
+            Intent intent = new Intent(this, MainActivity.class);
+            this.startActivity(intent);
         }
 
         etUsername = findViewById(R.id.etUsername);
@@ -40,8 +46,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "onClick login button");
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
+                String username = etUsername.getEditText().getText().toString();
+                String password = etPassword.getEditText().getText().toString();
                 loginUser(username, password);
             }
         });

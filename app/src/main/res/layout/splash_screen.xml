@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/black"
+    tools:context=".activity.SplashActivity">
 
     <ImageView
         android:id="@+id/ivImageView"
@@ -15,7 +16,8 @@
         android:src="@mipmap/ic_icon_new_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:transitionName="logo_image"/>
 
     <TextView
         android:id="@+id/tvSlogan"
@@ -32,7 +34,8 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/ivImageView"
+        android:transitionName="logo_text"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

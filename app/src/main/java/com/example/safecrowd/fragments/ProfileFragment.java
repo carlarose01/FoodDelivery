@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.safecrowd.activity.EditProfileActivity;
+import com.example.safecrowd.activity.LoginActivity;
 import com.example.safecrowd.activity.OpeningActivity;
 import com.example.safecrowd.R;
 import com.example.safecrowd.models.Post;
@@ -102,11 +103,17 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ParseUser.logOut();
-                goOpening();
+                goLogin();
+                //goOpening();
             }
         });
 
         populateUserHeadline(user);
+    }
+
+    private void goLogin() {
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        startActivity(intent);
     }
 
     private void goOpening() {
