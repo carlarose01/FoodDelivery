@@ -17,7 +17,8 @@
         android:layout_marginEnd="22dp"
         android:layout_marginBottom="10dp"
         android:text="Comment"
-        android:background="@color/blue"
+        android:textColor="@color/black"
+        android:background="@drawable/rounded_rectangle"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="22dp" />

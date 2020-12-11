@@ -159,10 +159,15 @@ public class ProfileFragment extends Fragment {
 
                 Log.i(TAG, "User changes were saved!!");
 //                pd.dismiss();
-                //goMainActivity();
+                goMainActivity();
                 MainActivity.goUserProfile(user);
             }
         });
+    }
+
+    public void goMainActivity() {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        this.startActivity(intent);
     }
 
     public void populateUserHeadline(final ParseUser user) {

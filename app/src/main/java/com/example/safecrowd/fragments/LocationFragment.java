@@ -155,7 +155,7 @@ public class LocationFragment extends Fragment implements OnMapReadyCallback, Go
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
         // zoom the map to the currentUserLocation
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentUser, 12));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentUser, 9));
     }
 
     private ParseGeoPoint getCurrentUserLocation() {

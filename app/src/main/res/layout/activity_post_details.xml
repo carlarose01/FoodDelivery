@@ -5,55 +5,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.example.safecrowd.activity.PostDetailsActivity">
+    tools:context="com.example.safecrowd.activity.PostDetailsActivity"
+    android:padding="10dp">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tweet_detail_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/orange"
-        app:popupTheme="@style/Theme.AppCompat.DayNight"
-        android:elevation="4dp"
-        android:layout_marginTop="10dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear_layout"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/tweet_detail_toolbar_back_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_back_button_accent"
+        android:layout_alignParentLeft="true" />
 
-            <ImageView
-                android:id="@+id/tweet_detail_toolbar_back_button"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:adjustViewBounds="true"
-                android:gravity="center"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_back_button_accent"
-                android:layout_alignParentLeft="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:text="Post"
+            android:layout_marginLeft="10dp"
+            android:textSize="36sp"
+            android:fontFamily="@font/squada_one"/>
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/tweet_detail_toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="18dp"
-                android:gravity="center"
-                android:text="Post"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/tweet_detail_toolbar_back_button"
-                android:layout_toRightOf="@+id/tweet_detail_toolbar_back_button" />
-        </RelativeLayout>
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/tweet_detail_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="@color/orange"-->
+<!--        app:popupTheme="@style/Theme.AppCompat.DayNight"-->
+<!--        android:elevation="4dp"-->
+<!--        android:layout_marginTop="10dp">-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
 
 
-    </androidx.appcompat.widget.Toolbar>
+
+<!--            <TextView-->
+<!--                android:id="@+id/tweet_detail_toolbar_title"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:layout_marginLeft="18dp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Post"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:layout_toEndOf="@+id/tweet_detail_toolbar_back_button"-->
+<!--                android:layout_toRightOf="@+id/tweet_detail_toolbar_back_button" />-->
+<!--        </RelativeLayout>-->
+
+
+<!--    </androidx.appcompat.widget.Toolbar>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tweet_detail_toolbar">
+        android:layout_below="@+id/linear_layout">
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
