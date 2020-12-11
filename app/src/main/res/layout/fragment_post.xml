@@ -1,69 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_content"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeContainer"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Theme.SafeCrowd">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/compose_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/orange"
-        android:theme="@style/Theme.SafeCrowd"
-        android:layout_marginTop="0dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/profile_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_profile_black"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp" />
 
-            <TextView
-                android:id="@+id/compose_toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="16dp"
-                android:layout_toEndOf="@+id/compose_toolbar_cancel_button"
-                android:layout_toRightOf="@+id/compose_toolbar_cancel_button"
-                android:gravity="bottom"
-                android:text="Home"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/notification_icon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/profile_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/profile_icon"
+        app:srcCompat="@drawable/ic_heart_solid_red_svg"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginRight="10dp" />
 
-            <ImageView
-                android:id="@+id/compose_toolbar_image"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="16dp"
-                android:adjustViewBounds="true"
-                android:gravity="center"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_profile"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="16dp" />
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:id="@+id/hello_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        android:fontFamily="@font/squada_one"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notification_icon"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".fragments.PostFragment"
-        android:paddingTop="60dp">
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/compose_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="@color/orange"-->
+<!--        android:theme="@style/Theme.SafeCrowd"-->
+<!--        android:layout_marginTop="0dp">-->
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/compose_toolbar_title"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:layout_marginStart="18dp"-->
+<!--                android:layout_marginLeft="18dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_toEndOf="@+id/compose_toolbar_cancel_button"-->
+<!--                android:layout_toRightOf="@+id/compose_toolbar_cancel_button"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="Home"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/compose_toolbar_image"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="35dp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:gravity="center"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                app:srcCompat="@drawable/ic_profile"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_marginRight="16dp" />-->
+<!--        </RelativeLayout>-->
+<!--    </androidx.appcompat.widget.Toolbar>-->
+
+<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--        android:id="@+id/swipeContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:context=".fragments.PostFragment">-->
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPosts"
+            android:id="@+id/rvFilters"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp" />
+            android:layout_height="60dp"
+            app:layout_constraintVertical_bias="0"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hello_text"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPosts"
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvFilters"
+        app:layout_constraintVertical_bias="0" />
 
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -71,11 +137,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        app:tint="@color/black"
-        app:srcCompat="@drawable/ic_compose"
+        android:tooltipText="Create a new post"
         app:layout_anchor="@id/rvPosts"
         app:layout_anchorGravity="bottom|right|end"
         app:layout_behavior="com.example.safecrowd.ScrollAwareFABBehavior"
-        android:tooltipText="Create a new post"
-        />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_compose"
+        app:tint="@color/white"
+        android:backgroundTint="@color/soft_red"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

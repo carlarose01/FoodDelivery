@@ -306,7 +306,7 @@ public class ComposeActivity extends AppCompatActivity {
 //            startActivity(intent);
 //        }
         // otherwise, return the current user location
-        return currentUser.getParseGeoPoint("Location");
+        return currentUser.getParseGeoPoint("location");
     }
 
     private void saveCurrentUserLocation() {
@@ -326,7 +326,7 @@ public class ComposeActivity extends AppCompatActivity {
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
                 if (currentUser != null) {
-                    currentUser.put("Location", currentUserLocation);
+                    currentUser.put("location", currentUserLocation);
                     currentUser.saveInBackground();
                 } else {
                     // do something like coming back to the login activity

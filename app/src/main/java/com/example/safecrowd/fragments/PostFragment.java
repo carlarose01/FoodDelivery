@@ -20,7 +20,9 @@ import android.view.WindowManager;
 import com.example.safecrowd.activity.ComposeActivity;
 import com.example.safecrowd.adapters.PostsAdapter;
 import com.example.safecrowd.R;
+import com.example.safecrowd.adapters.StaticRvAdapter;
 import com.example.safecrowd.models.Post;
+import com.example.safecrowd.models.StaticRv;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -40,6 +42,9 @@ public class PostFragment extends Fragment {
     protected List<Post> allPosts;
     private SwipeRefreshLayout swipeContainer;
     private FloatingActionButton fab;
+
+    private RecyclerView rvFilters;
+    protected StaticRvAdapter staticRvAdapter;
 
     public PostFragment() {
         // Required empty public constructor
@@ -65,6 +70,17 @@ public class PostFragment extends Fragment {
         View decorView = getActivity().getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_LOW_PROFILE;
         decorView.setSystemUiVisibility(uiOptions);
+
+        ArrayList<StaticRv> item = new ArrayList<>();
+        item.add(new StaticRv("General"));
+        item.add(new StaticRv("COVID-19"));
+        item.add(new StaticRv("Protests"));
+        item.add(new StaticRv("Events"));
+        item.add(new StaticRv("Campus"));
+        rvFilters = view.findViewById(R.id.rvFilters);
+        staticRvAdapter = new StaticRvAdapter(item);
+        rvFilters.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        rvFilters.setAdapter(staticRvAdapter);
 
         fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

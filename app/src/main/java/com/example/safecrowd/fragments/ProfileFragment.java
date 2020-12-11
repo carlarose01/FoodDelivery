@@ -7,20 +7,35 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.safecrowd.activity.EditProfileActivity;
 import com.example.safecrowd.activity.LoginActivity;
+import com.example.safecrowd.activity.MainActivity;
 import com.example.safecrowd.activity.OpeningActivity;
 import com.example.safecrowd.R;
 import com.example.safecrowd.models.Post;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputLayout;
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
+
+import java.io.File;
+
+import static com.example.safecrowd.models.Post.KEY_BIO;
+import static com.example.safecrowd.models.Post.KEY_NAME;
+import static com.example.safecrowd.models.Post.KEY_PROFILEPIC;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,11 +52,15 @@ public class ProfileFragment extends Fragment {
     public long userId;
     public String screenName;
     private TextView tvUserNameP;
-    private TextView tvSinceP;
-    private TextView tvUserDescription;
-    private FloatingActionButton ivProfileImageP;
+    private TextView tvName;
+    private TextInputLayout tvUserDescription;
+    private TextInputLayout tvNameEdit;
+    private ImageView ivProfileImageP;
     Button btnEdit;
     Button btnLogout;
+    File photoFile;
+
+    private String photoFileName = "photo.jpg";
 
     private ParseUser user;
 
@@ -57,7 +76,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.profile, container, false);
     }
 
     @Override
@@ -77,20 +96,22 @@ public class ProfileFragment extends Fragment {
 //            onError(0, "Screen name was null");
 //        }
 
-        tvUserNameP = (TextView) view.findViewById(R.id.tvUserNameP);
-        tvSinceP = (TextView) view.findViewById(R.id.tvSinceP);
-        tvUserDescription = (TextView) view.findViewById(R.id.tvUserDescription);
+        tvUserNameP = view.findViewById(R.id.tvUserNameP);
+        tvName = view.findViewById(R.id.tvName);
+        tvUserDescription = view.findViewById(R.id.tvUserDescription);
+        tvNameEdit = view.findViewById(R.id.tvNameEdit);
         btnEdit = view.findViewById(R.id.btnEdit);
         btnLogout = view.findViewById(R.id.btnLogout);
 
-        ivProfileImageP = (FloatingActionButton) view.findViewById(R.id.ivProfileImageP);
+        ivProfileImageP = view.findViewById(R.id.ivProfileImageP);
 
         user = ParseUser.getCurrentUser();
 
-        if (!user.getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
-            btnEdit.setVisibility(View.GONE);
-            btnLogout.setVisibility(View.GONE);
-        }
+//        if (!user.getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
+//            btnEdit.setVisibility(View.GONE);
+//            btnLogout.setVisibility(View.GONE);
+//        }
+        populateUserHeadline(user);
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +129,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        populateUserHeadline(user);
+        //populateUserHeadline(user);
     }
 
     private void goLogin() {
@@ -116,35 +137,66 @@ public class ProfileFragment extends Fragment {
         startActivity(intent);
     }
 
-    private void goOpening() {
-        Intent intent = new Intent(getContext(), OpeningActivity.class);
-        startActivity(intent);
+    public void goEditProfile() {
+//        Intent intent = new Intent(getContext(), EditProfileActivity.class);
+//        getContext().startActivity(intent)
+        saveProfile(tvUserDescription.getEditText().getText().toString(), tvNameEdit.getEditText().getText().toString(), photoFile);
     }
 
-    public void goEditProfile() {
-        Intent intent = new Intent(getContext(), EditProfileActivity.class);
-        getContext().startActivity(intent);
+    private void saveProfile(String bio, String name, File photoFile) {
+        user.put(KEY_NAME, name);
+        user.put(KEY_BIO, bio);
+        if (photoFile != null) {
+            user.put(KEY_PROFILEPIC, new ParseFile(photoFile));
+        }
+        user.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue saving the user" , e);
+                    return;
+                }
+
+                Log.i(TAG, "User changes were saved!!");
+//                pd.dismiss();
+                //goMainActivity();
+                MainActivity.goUserProfile(user);
+            }
+        });
     }
 
     public void populateUserHeadline(final ParseUser user) {
         // populate the screen with info gathered
+        tvName.setText(user.getString("name"));
+        tvNameEdit.getEditText().setText(user.getString("name"));
         tvUserNameP.setText(user.getUsername());
-        tvSinceP.setText("On SafeCrowd since " + user.getCreatedAt());
+        //tvSinceP.setText("On SafeCrowd since " + user.getCreatedAt());
         if (user.getString(Post.KEY_BIO) == null) {
             tvUserDescription.setVisibility(View.GONE);
         } else {
-            tvUserDescription.setText(user.getString(Post.KEY_BIO));
+            tvUserDescription.getEditText().setText(user.getString(Post.KEY_BIO));
         }
 //        tvUserDescription.setText(user.getEmail()); // dont have description
 //        if (user.getEmail().length() <= 1) { // if description is short dont show
 //            tvUserDescription.setVisibility(View.GONE);
 //        }
         // add the images
+        ParseFile profile = user.getParseFile(KEY_PROFILEPIC);
+        if (profile != null) {
+            Glide.with(this)
+                    .load(profile.getUrl())
+                    .circleCrop()
+                    .into(ivProfileImageP);
+        } else {
+            Glide.with(this)
+                    .load(R.mipmap.profile_circle_foreground)
+                    .circleCrop().into(ivProfileImageP);
+        }
 //        Glide.with(getActivity().getBaseContext()).load(user.getProfileImage())
 //                .placeholder(R.drawable.ic_profile)
 //                .error(R.drawable.ic_profile)
 //                .into(ivProfileImageP);
-        }
+//        }
 
 //    public void onError(int code, String message) {
 //        String onErrorString = "onError error occurred";
@@ -172,5 +224,5 @@ public class ProfileFragment extends Fragment {
 //        }
 //        Log.e(TAG, String.format("%s at %s: %s", onErrorString, code, message));
 //        getActivity().finish(); // finish because bad error
-//    }
+   }
 }
