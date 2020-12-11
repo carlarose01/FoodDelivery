@@ -69,7 +69,7 @@ public class ComposeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_compose);
+        setContentView(R.layout.compose_frag);
         // This example uses decor view, but you can use any visible view.
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_LOW_PROFILE;

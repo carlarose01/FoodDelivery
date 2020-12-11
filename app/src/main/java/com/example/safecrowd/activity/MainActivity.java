@@ -11,12 +11,15 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +34,7 @@ import com.example.safecrowd.fragments.ProfileFragment;
 import com.example.safecrowd.fragments.PostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -41,48 +45,48 @@ import com.parse.SaveCallback;
 import java.io.File;
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
 
     public static FragmentManager fragmentManager;
-    private BottomNavigationView bottomNavigationView;
+    private ChipNavigationBar bottomNavigationView;
 
     @Override
+    @SuppressWarnings("DEPRECATION")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         fragmentManager = getSupportFragmentManager();
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView = findViewById(R.id.bottomNav);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public void onItemSelected(int i) {
                 Fragment fragment;
-                switch (menuItem.getItemId()) {
-                    case R.id.action_home:
+                switch (i) {
+                    case R.id.home:
                         fragment = new PostFragment();
                         break;
-                    case R.id.action_alert:
+                    case R.id.alert:
                         fragment = new AlertFragment();
                         break;
-                    case R.id.action_location:
+                    case R.id.location:
                         fragment = new LocationFragment();
                         break;
-                    case R.id.action_profile:
+                    case R.id.profile:
                     default:
                         fragment = new ProfileFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
-                return true;
             }
         });
         // Set default selection
-        bottomNavigationView.setSelectedItemId(R.id.action_home);
+        bottomNavigationView.setItemSelected(R.id.home, true);
     }
 
     public static void goUserProfile(ParseUser user) {

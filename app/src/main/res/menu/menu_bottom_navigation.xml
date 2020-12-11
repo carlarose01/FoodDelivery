@@ -2,23 +2,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_location"
-        android:icon="@drawable/ic_location"
+        android:id="@+id/location"
         android:title="Location"
-        app:showAsAction="always" />
+        android:icon="@drawable/ic_location"
+        app:cnb_textColor="#000"
+        app:cnb_iconColor="#000"
+        app:cnb_backgroundColor="#fff"
+        />
     <item
-        android:id="@+id/action_home"
-        android:icon="@drawable/ic_home"
+        android:id="@+id/home"
         android:title="Home"
-        app:showAsAction="always" />
+        android:icon="@drawable/ic_home"
+        app:cnb_textColor="#000"
+        app:cnb_iconColor="#000"
+        app:cnb_backgroundColor="#fff"
+        />
     <item
-        android:id="@+id/action_alert"
-        android:icon="@drawable/ic_alert"
+        android:id="@+id/alert"
         android:title="Alert"
-        app:showAsAction="always" />
+        android:icon="@drawable/ic_alert"
+        app:cnb_textColor="#000"
+        app:cnb_iconColor="#000"
+        app:cnb_backgroundColor="#fff"
+        />
     <item
-        android:id="@+id/action_profile"
-        android:icon="@drawable/ic_profile"
+        android:id="@+id/profile"
         android:title="Profile"
-        app:showAsAction="always" />
+        android:icon="@drawable/ic_profile"
+        app:cnb_textColor="#000"
+        app:cnb_iconColor="#000"
+        app:cnb_backgroundColor="#fff"
+        />
 </menu>

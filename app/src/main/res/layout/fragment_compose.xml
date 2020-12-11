@@ -5,68 +5,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activity.ComposeActivity" >
+    >
+
+    <TextView
+        android:id="@+id/hello_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Post"
+        android:textColor="@color/soft_red"
+        android:textSize="36sp"
+        android:fontFamily="@font/squada_one"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp" />
 
     <!--        move toolbar down-->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/compose_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/orange"
-        android:theme="@style/Theme.SafeCrowd"
-        app:popupTheme="@style/Theme.AppCompat.DayNight"
-        android:layout_marginTop="10dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/compose_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="@color/orange"-->
+<!--        android:theme="@style/Theme.SafeCrowd"-->
+<!--        app:popupTheme="@style/Theme.AppCompat.DayNight"-->
+<!--        android:layout_marginTop="10dp">-->
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
 
-            <ImageView
-                android:id="@+id/compose_toolbar_cancel_button"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:adjustViewBounds="true"
-                android:gravity="center"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_close"
-                android:layout_alignParentLeft="true" />
+<!--            <ImageView-->
+<!--                android:id="@+id/compose_toolbar_cancel_button"-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="25dp"-->
+<!--                android:layout_alignParentStart="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:gravity="center"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                app:srcCompat="@drawable/ic_close"-->
+<!--                android:layout_alignParentLeft="true" />-->
 
-            <TextView
-                android:id="@+id/compose_toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="18dp"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="16dp"
-                android:layout_toEndOf="@+id/compose_toolbar_cancel_button"
-                android:layout_toRightOf="@+id/compose_toolbar_cancel_button"
-                android:gravity="bottom"
-                android:text="New post"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/compose_toolbar_title"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentTop="true"-->
+<!--                android:layout_marginStart="18dp"-->
+<!--                android:layout_marginLeft="18dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_toEndOf="@+id/compose_toolbar_cancel_button"-->
+<!--                android:layout_toRightOf="@+id/compose_toolbar_cancel_button"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="New post"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold" />-->
 
-            <ImageView
-                android:id="@+id/compose_toolbar_image"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="16dp"
-                android:adjustViewBounds="true"
-                android:gravity="center"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_profile"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="16dp" />
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
+<!--            <ImageView-->
+<!--                android:id="@+id/compose_toolbar_image"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="35dp"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:adjustViewBounds="true"-->
+<!--                android:gravity="center"-->
+<!--                android:scaleType="fitCenter"-->
+<!--                app:srcCompat="@drawable/ic_profile"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_marginRight="16dp" />-->
+<!--        </RelativeLayout>-->
+<!--    </androidx.appcompat.widget.Toolbar>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/compose_toolbar"
+        android:layout_below="@id/hello_text"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:padding="8dp">
