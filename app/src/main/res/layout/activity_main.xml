@@ -22,6 +22,7 @@
         android:background="@drawable/round"
         android:elevation="18dp"
         android:padding="8dp"
+        android:layout_marginBottom="30dp"
         app:cnb_menuResource="@menu/menu_bottom_navigation"
         app:cnb_unselectedColor="#fff"
         />

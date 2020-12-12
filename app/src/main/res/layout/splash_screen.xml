@@ -29,13 +29,33 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:fontFamily="@font/roboto"
-        android:text="See something. Say something."
+        android:text="Stay connected with your community!"
+        android:textStyle="italic"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivImageView"
         android:transitionName="logo_text"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvSlogan2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:fontFamily="@font/roboto"-->
+<!--        android:text="Say Something."-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvSlogan"-->
+<!--        android:transitionName="logo_text"/>-->
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

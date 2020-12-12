@@ -135,9 +135,14 @@ public class ComposeActivity extends AppCompatActivity {
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 savePost(description, currentUser, photoFile);
-
+                goMainActivity();
             }
         });
+    }
+
+    public void goMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        this.startActivity(intent);
     }
 
     private void launchCamera() {
