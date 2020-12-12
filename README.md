@@ -113,7 +113,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 | post  | Pointer to Post  | pointer to post  |
 | image  | File  | image that user posts  |
 | caption  | String  | post caption by User  |
-| likesCount  | Number  | number of likes under the post  |
+| likes  | Array  | array of Usersthat like the comment  |
 | createdAt  | DateTime  | date when post is created (default)  |
 | updatedAt  | DateTime  | date when post is last updated (default)  |
 | location  | GeoPoint  | location where User tags the post  |
@@ -125,6 +125,9 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 | name  | String  | author name  |
 | username  | String  | author username  |
 | profileImage  | File  | image author  |
+| location  | GeoPoint  | current User location  |
+| bio  | String  | description of User  |
+
 
 **Activity**
 | Property  | Type  | Description  |
