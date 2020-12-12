@@ -113,7 +113,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 | post  | Pointer to Post  | pointer to post  |
 | image  | File  | image that user posts  |
 | caption  | String  | post caption by User  |
-| likes  | Array  | array of Usersthat like the comment  |
+| likes  | Array  | array of Users that like the comment  |
 | createdAt  | DateTime  | date when post is created (default)  |
 | updatedAt  | DateTime  | date when post is last updated (default)  |
 | location  | GeoPoint  | location where User tags the post  |
