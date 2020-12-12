@@ -30,16 +30,16 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 - [x] User should be able to create account, log in, log out
 - [x] User should be able to view feed of posts
 - [x] User should be able to create new post with image
-- [ ] User should be able to view map to see activity going on in their area
-- [ ] User should be able to tag location when uploading posts
+- [x] User should be able to view map to see activity going on in their area
+- [x] User should be able to tag location when uploading posts
 - [x] User should be able to view replies to their post in details view
-- [ ] User should be able to alert authorities in the need for immediate assistance 
+- [x] User should be able to alert authorities in the need for immediate assistance 
 
 **Optional Nice-to-have Stories**
 
 - [x] User should be able to react (like) to others' posts
 - [x] User should be able to reply to others' posts
-- [ ] User should be able to filter feed based on safety, events, etc.
+- [x] User should be able to filter feed based on safety, events, etc.
 
 ### 2. Screen Archetypes
 
@@ -100,8 +100,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 | author  | Pointer to User  | image author  |
 | image  | File  | image that user posts  |
 | caption  | String  | post caption by User  |
-| commentsCount  | Number  | numbers of comments posted to post  |
-| likesCount  | Number  | number of likes under the post  |
+| likes  | Array  | array of Users who like Post  |
 | createdAt  | DateTime  | date when post is created (default)  |
 | updatedAt  | DateTime  | date when post is last updated (default)  |
 | location  | GeoPoint  | location where User tags the post  |
@@ -114,7 +113,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 | post  | Pointer to Post  | pointer to post  |
 | image  | File  | image that user posts  |
 | caption  | String  | post caption by User  |
-| likesCount  | Number  | number of likes under the post  |
+| likes  | Array  | array of Usersthat like the comment  |
 | createdAt  | DateTime  | date when post is created (default)  |
 | updatedAt  | DateTime  | date when post is last updated (default)  |
 | location  | GeoPoint  | location where User tags the post  |
@@ -126,6 +125,9 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 | name  | String  | author name  |
 | username  | String  | author username  |
 | profileImage  | File  | image author  |
+| location  | GeoPoint  | current User location  |
+| bio  | String  | description of User  |
+
 
 **Activity**
 | Property  | Type  | Description  |
@@ -163,4 +165,7 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 <img src="https://github.com/carlarose01/SafeCrowd/blob/master/sprint.gif" width=300>
 
 ### Sprint 2 Gif
+<img src="https://github.com/carlarose01/SafeCrowd/blob/master/sprint2.gif" width=300>
+
+### Sprint 3 Gif
 <img src="https://github.com/carlarose01/SafeCrowd/blob/master/sprint2.gif" width=300>
