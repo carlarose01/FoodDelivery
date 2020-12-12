@@ -168,4 +168,4 @@ Safety crowdsourcing app developed for communities to remain safe reporting susp
 <img src="https://github.com/carlarose01/SafeCrowd/blob/master/sprint2.gif" width=300>
 
 ### Sprint 3 Gif
-<img src="https://github.com/carlarose01/SafeCrowd/blob/master/sprint2.gif" width=300>
+<img src="https://github.com/carlarose01/SafeCrowd/blob/master/ezgif.com-gif-maker.gif" width=300>
