@@ -99,7 +99,7 @@
             android:id="@+id/btnEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple"
+            android:backgroundTint="@color/blue"
             android:fontFamily="@font/roboto_bold"
             android:text="Update"
             android:textColor="@color/white"/>
@@ -108,7 +108,7 @@
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple"
+            android:backgroundTint="@color/blue"
             android:fontFamily="@font/roboto_bold"
             android:text="Log out"
             android:textColor="@color/white"

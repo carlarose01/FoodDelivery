@@ -32,7 +32,7 @@
         android:layout_marginLeft="20dp"
     android:textColor="@color/purple"
     android:textSize="36sp"
-    android:fontFamily="@font/squada_one" />
+    android:fontFamily="@font/hammersmith_one" />
 
     </LinearLayout>
 
