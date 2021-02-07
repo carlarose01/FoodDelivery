@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:padding="20dp"
-        android:background="@color/soft_red">
+        android:background="#F1E8B8" >
 
         <ImageView
             android:id="@+id/ivProfileImageP"
@@ -99,19 +99,19 @@
             android:id="@+id/btnEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/red"
+            android:backgroundTint="@color/purple"
             android:fontFamily="@font/roboto_bold"
             android:text="Update"
-            android:textColor="@color/black"/>
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/red"
+            android:backgroundTint="@color/purple"
             android:fontFamily="@font/roboto_bold"
             android:text="Log out"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_marginTop="5dp"/>
 
     </LinearLayout>

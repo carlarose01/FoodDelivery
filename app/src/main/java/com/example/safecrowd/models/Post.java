@@ -33,6 +33,7 @@ public class Post extends ParseObject {
     public static final String KEY_BIO = "bio";
     public static final String KEY_LIKES = "likes";
     public static final String KEY_LOCATION = "location";
+    public static final String KEY_TAG = "tag";
     private static final String TAG = "Post";
     public boolean mediaFound = true; // can set to true if image is provided
 
@@ -66,6 +67,10 @@ public class Post extends ParseObject {
     public void setKeyLocation(ParseGeoPoint geoPoint) { put(KEY_LOCATION, geoPoint); }
 
     public ParseGeoPoint getKeyLocation() { return getParseGeoPoint(KEY_LOCATION); }
+
+    public void setKeyTag(String tag) { put(KEY_TAG, tag); }
+
+    public String getKeyTag() { return getString(KEY_TAG); }
 
     public int getCommentsCount() { return getInt(KEY_COMMENTS_COUNT); }
 

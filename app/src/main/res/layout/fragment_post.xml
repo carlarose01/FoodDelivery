@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Home"
-        android:textColor="@color/soft_red"
+        android:textColor="@color/purple"
         android:textSize="36sp"
         android:fontFamily="@font/squada_one"
         app:layout_constraintVertical_bias="0"
@@ -144,7 +144,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_compose"
         app:tint="@color/white"
-        android:backgroundTint="@color/soft_red"
+        android:backgroundTint="@color/purple"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

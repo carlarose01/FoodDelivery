@@ -66,7 +66,8 @@
         android:padding="12dp"
         android:layout_below="@id/inPassword"
         android:text="Login"
-        android:background="@color/blue" />
+        android:textColor="@color/white"
+        android:background="@color/purple" />
 
 
 </RelativeLayout>

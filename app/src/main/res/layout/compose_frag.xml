@@ -30,7 +30,7 @@
     android:layout_height="wrap_content"
     android:text="New Post"
         android:layout_marginLeft="20dp"
-    android:textColor="@color/soft_red"
+    android:textColor="@color/purple"
     android:textSize="36sp"
     android:fontFamily="@font/squada_one" />
 
@@ -81,7 +81,6 @@
         android:id="@+id/btnGallery"
         android:background="@drawable/rounded_rectangle"
         android:layout_marginLeft="10dp"
-        android:backgroundTint="@color/red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gallery"

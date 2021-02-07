@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Post"
-        android:textColor="@color/soft_red"
+        android:textColor="@color/purple"
         android:textSize="36sp"
         android:fontFamily="@font/squada_one"
         app:layout_constraintVertical_bias="0"

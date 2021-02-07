@@ -37,7 +37,8 @@
         android:padding="12dp"
         android:layout_below="@id/imageView3"
         android:text="Login"
-        android:background="@color/blue" />
+        android:textColor="@color/white"
+        android:background="@color/purple" />
 
 <!--    <Button-->
 <!--        android:id="@+id/btnSignup"-->
@@ -58,6 +59,7 @@
         android:padding="12dp"
         android:layout_below="@id/btnLogin"
         android:text="Sign Up"
-        android:background="@color/blue" />
+        android:textColor="@color/white"
+        android:background="@color/purple" />
 
 </RelativeLayout>

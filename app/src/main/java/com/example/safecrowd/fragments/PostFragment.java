@@ -42,6 +42,7 @@ public class PostFragment extends Fragment {
     protected List<Post> allPosts;
     private SwipeRefreshLayout swipeContainer;
     private FloatingActionButton fab;
+    String tag;
 
     private RecyclerView rvFilters;
     protected StaticRvAdapter staticRvAdapter;
@@ -82,6 +83,13 @@ public class PostFragment extends Fragment {
         rvFilters.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rvFilters.setAdapter(staticRvAdapter);
 
+        if (getArguments() != null) {
+            tag = getArguments().getString("tag");
+            Log.i(TAG, tag);
+        } else {
+            tag = "General";
+        }
+
         fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +97,9 @@ public class PostFragment extends Fragment {
                 startActivity(new Intent(getContext(), ComposeActivity.class));
             }
         });
+
         rvPosts = view.findViewById(R.id.rvPosts);
+
         swipeContainer = view.findViewById(R.id.swipeContainer);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -111,7 +121,7 @@ public class PostFragment extends Fragment {
         queryPosts();
     }
 
-    private void fetchTimelineAsync(int page) {
+    public void fetchTimelineAsync(int page) {
         queryPosts();
         postsAdapter.clear();
         postsAdapter.addAll(allPosts);
@@ -121,6 +131,7 @@ public class PostFragment extends Fragment {
     protected void queryPosts() {
         // Specify which class to query
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.whereEqualTo(Post.KEY_TAG, tag);
         query.include(Post.KEY_USER);
         query.setLimit(20);
         query.addDescendingOrder(Post.KEY_CREATED);
