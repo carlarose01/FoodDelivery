@@ -1,3 +1,25 @@
+Outsource Version 2 - Hack-a-thon
+===
+
+Outsource
+
+## Table of Contents
+1. [Overview](#Overview)
+1. [Product Design](#Product-Design)
+
+## Overview
+### Description
+App developed for communities to outsource the police, who are often harmmful to minority communities.
+
+## Product Design
+### Updates
+Updated UI/UX
+Focused goal of project
+Implemented ML/AI Chat bot using Google Cloud Product, Diagflow
+
+## Gif
+<img src="https://github.com/carlarose01/SafeCrowd/blob/master/hack-a-thon.gif" width=300>
+
 Original App Design Project - README Template
 ===
 
