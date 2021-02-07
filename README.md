@@ -18,7 +18,7 @@ Focused goal of project
 Implemented ML/AI Chat bot using Google Cloud Product, Diagflow
 
 ## Gif
-<img src="https://github.com/carlarose01/SafeCrowd/blob/master/hack-a-thon.gif" width=300>
+<img src="https://giphy.com/24afb8a1-8593-4eac-a1b0-f838b2eccd2f" width=300>
 
 Original App Design Project - README Template
 ===
